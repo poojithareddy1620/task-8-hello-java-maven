@@ -1,50 +1,37 @@
-# task-8-hello-java-maven
-# Hello Java Maven
+# Hello Java Maven Project
 
-This is a simple Java HelloWorld application used to demonstrate a basic CI/CD pipeline using Jenkins and Maven.
+This is a simple Java HelloWorld application built with Maven, used to demonstrate a Jenkins CI/CD pipeline.
 
-## 📂 Project Structure
+## Project Structure
 
-hello-java-maven/
-├── pom.xml
-└── src/
-└── main/
-└── java/
-└── HelloWorld.java
+- `src/main/java/HelloWorld.java`: Java source code that prints a message.
+- `pom.xml`: Maven configuration file that manages project build and dependencies.
 
-markdown
-Copy
-Edit
+## Prerequisites
 
-## 🔧 Tools Used
+- Java JDK 8 or 11
+- Maven
+- Jenkins (with Maven plugin configured)
 
-- Java JDK 8
-- Maven 3.8.6
-- Jenkins (via Docker)
-- Git & GitHub
+## How to Build Locally
 
-## 🛠️ Jenkins Build Instructions
+1. Clone the repository:
 
-1. **Install Jenkins via Docker:**
-   ```bash
-   docker run -d -p 8080:8080 -p 50000:50000 --name jenkins -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
-Install Maven in Jenkins:
+```bash
+git clone https://github.com/poojithareddy1620/task-8-hello-java-maven.git
+cd task-8-hello-java-maven
+**Build the project using Maven:**
+mvn clean package
+**Run the compiled program:**
+java -cp target/hello-1.0.jar HelloWorld
+**You should see the output:**
+Hello, Jenkins + Maven!
 
-Go to Manage Jenkins → Global Tool Configuration.
+Jenkins Integration
+This project is used in a Jenkins freestyle job configured to:
 
-Add Maven (e.g., Maven 3.8.6).
+Pull code from this GitHub repo
 
-Create Freestyle Job:
+Run mvn clean package as the build step
 
-Source Code Management: Git → Add your GitHub repo URL.
-
-Build Step: Invoke top-level Maven targets
-
-Goals: clean package
-
-Build the job manually
-
-✅ Output
-If everything is set up correctly, Jenkins will compile your project, and the console output will end with [INFO] BUILD SUCCESS
-
-
+Validate the build status in Jenkins console
